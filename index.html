@@ -66,16 +66,16 @@
     }
     
     /* ================================== */
-    /* CORREÇÃO DO LAYOUT WEB */
+    /* CORREÇÃO AGRESSIVA DO LAYOUT WEB */
     /* ================================== */
     .main-content {
         display: flex;
         margin-top: 30px; 
-        /* CORREÇÃO: Garante que o contêiner principal se comporte como Flexbox */
         align-items: flex-start; 
+        /* Usamos o Bootstrap container que já tem a largura máxima definida */
     }
     
-    /* SIDEBAR DE CATEGORIAS */
+    /* SIDEBAR DE CATEGORIAS (MANTÉM LARGURA FIXA E IMPEDE ENCOLHIMENTO) */
     .sidebar-categorias {
         min-width: 280px;
         max-width: 280px;
@@ -85,9 +85,15 @@
         border-radius: 5px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
         height: fit-content; 
-        /* GARANTE QUE A SIDEBAR NÃO ENCOLHA */
         flex-shrink: 0; 
     }
+    
+    /* Área de produtos (Ocupa o espaço restante) */
+    #productCatalog {
+        flex-grow: 1; 
+        padding-left: 15px; 
+    }
+
     /* Estilos de fonte da sidebar mantidos */
     .sidebar-categorias h4 {
         color: #C27C7C; 
@@ -113,13 +119,7 @@
         color: #A96868; 
         font-weight: bold;
     }
-    
-    /* Área de produtos (Ocupa o espaço restante) */
-    #productCatalog {
-        flex-grow: 1; 
-        padding-left: 15px; /* Adiciona um pequeno espaçamento à esquerda */
-    }
-
+    /* FIM DA CORREÇÃO DO LAYOUT WEB */
 
     /* ================================== */
     /* ESTILO: FILTRO MOBILE (CHIPS/BOTÕES) */
@@ -172,16 +172,12 @@
 
     /* Media Query para CELULAR (Telas Pequenas) */
     @media (max-width: 992px) {
-        /* MOSTRA O FILTRO DE BOTÕES */
         .mobile-filter-container {
             display: block; 
         }
-
-        /* ESCONDE A SIDEBAR LATERAL NO MOBILE */
         .sidebar-categorias {
             display: none;
         }
-        
         .main-content {
             display: block; 
             margin-top: 0; 
@@ -189,10 +185,8 @@
         #productCatalog {
             width: 100%;
             padding: 15px; 
-            padding-left: 0; /* Remove padding extra quebra o layout no mobile */
+            padding-left: 0;
         }
-        
-        /* Ajustes no cabeçalho mobile */
         .header-content {
             flex-wrap: wrap;
             justify-content: center;
@@ -496,7 +490,7 @@
                 
                 if (manualChip) manualChip.classList.add('active');
                 if (manualLink) manualLink.classList.add('active');
-                if (categoryValue === '' && document.getElementById('allProductsLink')) document.querySelector('.chip-button.all-products').classList.add('active'); 
+                if (categoryValue === '') document.querySelector('.chip-button.all-products').classList.add('active'); 
             }
 
             currentCategoryFilter = categoryValue;
