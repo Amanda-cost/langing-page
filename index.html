@@ -20,7 +20,7 @@
         color: #36454F;
     }
     
-    /* ESTILOS DO CABEÇALHO (MANTIDOS) */
+    /* ESTILOS DO CABEÇALHO */
     header {
         background-color: #ffffff;
         padding: 10px 0;
@@ -53,6 +53,7 @@
         border: 1px solid #C27C7C;
         padding-left: 15px;
     }
+
     .btn-contact-header {
         background-color: #C27C7C;
         color: white;
@@ -70,6 +71,175 @@
         color: white;
     }
     
+    @media (max-width: 992px) {
+        .header-content {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .logo, .btn-contact-header {
+            margin-bottom: 10px;
+        }
+        .logo {
+            order: 1;
+            width: 100%;
+            text-align: center;
+            justify-content: center;
+            padding: 0;
+        }
+        .search-bar-header {
+            order: 3;
+            width: 100%;
+            max-width: 100%;
+            margin: 5px 0 10px;
+        }
+        .btn-contact-header {
+            order: 2;
+        }
+    }
+    
+    /* ================================== */
+    /* ESTILO: CARROSSEL HERO */
+    /* ================================== */
+    .hero-carousel-container {
+        max-width: 1000px;
+        margin: 30px auto 0;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        overflow: hidden; 
+    }
+
+    .carousel-item-content {
+        background-color: #C27C7C; 
+        color: white; 
+        padding: 50px 0;
+        text-align: center;
+        height: 250px; 
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .carousel-item-content h1 {
+        font-size: 2.2rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    /* Estilo para o SEU Banner (Slide 2) */
+    .custom-banner-2 {
+        padding: 0;
+        background-color: transparent !important;
+        position: relative;
+    }
+    
+    .custom-banner-2 img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; 
+        display: block;
+    }
+
+    /* Botão de Destaque/Promoção (Vermelho) */
+    .btn-promo {
+        background-color: #ff4500; 
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 30px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        text-decoration: none;
+        transition: background-color 0.2s;
+        margin-top: 15px;
+    }
+    .btn-promo:hover {
+        background-color: #cc3700;
+        color: white;
+    }
+
+    /* Estilo para o botão de WhatsApp no Hero */
+    .btn-whatsapp {
+        background-color: #25d366; /* COR VERDE WHATSAPP */
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 25px;
+        font-size: 1.1rem;
+        text-decoration: none;
+        transition: background-color 0.2s;
+    }
+    .btn-whatsapp:hover {
+        background-color: #1c9d4b;
+    }
+
+    /* ESTILO DOS CARDS */
+    .card .btn-primary {
+        background-color: #C27C7C;
+        border-color: #C27C7C;
+    }
+
+    /* LAYOUT PRINCIPAL (SIDEBAR + PRODUTOS) */
+    .main-content {
+        display: flex;
+        margin-top: 30px; 
+    }
+    
+    /* SIDEBAR DE CATEGORIAS */
+    .sidebar-categorias {
+        min-width: 280px;
+        max-width: 280px;
+        padding: 15px;
+        margin-right: 20px;
+        background-color: #ffffff; 
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        height: fit-content; 
+    }
+
+    .sidebar-categorias h4 {
+        color: #C27C7C; 
+        padding-bottom: 0;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+    
+    .sidebar-categorias .categoria-group h5 {
+        font-size: 1.1rem;
+        color: #36454F;
+        font-weight: bold;
+        margin-bottom: 5px; 
+        margin-top: 15px; 
+    }
+    
+    /* Estilo para "TODOS OS PRODUTOS" */
+    #allProductsLink {
+        color: #C27C7C !important;
+        font-size: 1rem;
+        font-weight: bold;
+        display: block;
+        margin-bottom: 20px;
+        text-decoration: none;
+    }
+
+    /* Estilo para os itens de produto (Sem bolinhas e sem sublinhado) */
+    .sidebar-categorias .product-link {
+        margin-bottom: 3px;
+        padding-left: 0; 
+    }
+
+    .sidebar-categorias .product-link a {
+        text-decoration: none; 
+        color: #36454F;
+        display: block;
+        padding: 0;
+        transition: color 0.2s;
+    }
+    .sidebar-categorias .product-link a.active {
+        color: #A96868; 
+        font-weight: bold;
+    }
+
     /* ================================== */
     /* ESTILO: FILTRO MOBILE (DROPDOWN) */
     /* ================================== */
@@ -94,37 +264,13 @@
             display: block; 
         }
 
-        /* ESCONDE A SIDEBAR LATERAL (como já estava antes) */
+        /* ESCONDE A SIDEBAR LATERAL */
         .sidebar-categorias {
             display: none;
         }
         
-        .header-content {
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .logo, .btn-contact-header {
-            margin-bottom: 10px;
-        }
-        .logo {
-            order: 1;
-            width: 100%;
-            text-align: center;
-            justify-content: center;
-            padding: 0;
-        }
-        .search-bar-header {
-            order: 3;
-            width: 100%;
-            max-width: 100%;
-            margin: 5px 0 10px;
-        }
-        .btn-contact-header {
-            order: 2;
-        }
-
         .main-content {
-            display: block;
+            display: block; /* Garante que os produtos apareçam abaixo do filtro */
             margin-top: 0; /* Remove a margem extra no celular */
         }
         #productCatalog {
@@ -132,71 +278,6 @@
             padding: 15px; /* Adiciona padding para o catálogo */
         }
     }
-    
-    /* ================================== */
-    /* ESTILOS CARROSSEL E GERAIS (MANTIDOS) */
-    /* ================================== */
-    .hero-carousel-container {
-        max-width: 1000px;
-        margin: 30px auto 0;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-        border-radius: 5px;
-        overflow: hidden; 
-    }
-
-    .carousel-item-content {
-        background-color: #C27C7C; 
-        color: white; 
-        padding: 50px 0;
-        text-align: center;
-        height: 250px; 
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .custom-banner-2 {
-        padding: 0;
-        background-color: transparent !important;
-        position: relative;
-    }
-    
-    .custom-banner-2 img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover; 
-        display: block;
-    }
-    .btn-promo {
-        background-color: #ff4500; 
-        color: white;
-        border: none;
-        border-radius: 5px;
-        padding: 10px 30px;
-        font-size: 1.1rem;
-        font-weight: bold;
-        text-decoration: none;
-        transition: background-color 0.2s;
-        margin-top: 15px;
-    }
-
-    .card .btn-primary {
-        background-color: #C27C7C;
-        border-color: #C27C7C;
-    }
-
-    .sidebar-categorias {
-        min-width: 280px;
-        max-width: 280px;
-        padding: 15px;
-        margin-right: 20px;
-        background-color: #ffffff; 
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-        height: fit-content; 
-    }
-
     .footer {
         background-color: #36454F;
         color: white;
