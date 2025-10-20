@@ -43,17 +43,11 @@
         width: 140px;
         height: auto;
     }
-    .search-bar-header {
-        flex-grow: 1;
-        max-width: 500px;
-        margin: 0 20px;
-    }
     .search-bar-header .form-control {
         border-radius: 50px;
         border: 1px solid #C27C7C;
         padding-left: 15px;
     }
-
     .btn-contact-header {
         background-color: #C27C7C;
         color: white;
@@ -72,45 +66,100 @@
     }
     
     /* ================================== */
-    /* NOVO ESTILO: FILTRO MOBILE (CHIPS/BOTÕES) */
+    /* CORREÇÃO DO LAYOUT WEB */
+    /* ================================== */
+    .main-content {
+        display: flex;
+        margin-top: 30px; 
+        /* CORREÇÃO: Garante que o contêiner principal se comporte como Flexbox */
+        align-items: flex-start; 
+    }
+    
+    /* SIDEBAR DE CATEGORIAS */
+    .sidebar-categorias {
+        min-width: 280px;
+        max-width: 280px;
+        padding: 15px;
+        margin-right: 20px;
+        background-color: #ffffff; 
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        height: fit-content; 
+        /* GARANTE QUE A SIDEBAR NÃO ENCOLHA */
+        flex-shrink: 0; 
+    }
+    /* Estilos de fonte da sidebar mantidos */
+    .sidebar-categorias h4 {
+        color: #C27C7C; 
+        padding-bottom: 0;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+    .sidebar-categorias .categoria-group h5 {
+        font-size: 1.1rem;
+        color: #36454F;
+        font-weight: bold;
+        margin-bottom: 5px; 
+        margin-top: 15px; 
+    }
+    .sidebar-categorias .product-link a {
+        text-decoration: none; 
+        color: #36454F;
+        display: block;
+        padding: 0;
+        transition: color 0.2s;
+    }
+    .sidebar-categorias .product-link a.active {
+        color: #A96868; 
+        font-weight: bold;
+    }
+    
+    /* Área de produtos (Ocupa o espaço restante) */
+    #productCatalog {
+        flex-grow: 1; 
+        padding-left: 15px; /* Adiciona um pequeno espaçamento à esquerda */
+    }
+
+
+    /* ================================== */
+    /* ESTILO: FILTRO MOBILE (CHIPS/BOTÕES) */
     /* ================================== */
     .mobile-filter-container {
-        display: none; /* Escondido por padrão no Desktop */
+        display: none; 
         padding: 15px 0 10px 0;
         margin-top: 10px;
-        overflow-x: auto; /* Permite a rolagem horizontal */
-        white-space: nowrap; /* Impede que os botões quebrem a linha */
-        -webkit-overflow-scrolling: touch; /* Melhora a rolagem no iOS */
+        overflow-x: auto; 
+        white-space: nowrap; 
+        -webkit-overflow-scrolling: touch; 
     }
 
     .mobile-chip-list {
         padding: 0 15px;
         display: flex;
-        gap: 8px; /* Espaço entre os botões */
+        gap: 8px; 
     }
 
     .chip-button {
         display: inline-block;
         padding: 8px 15px;
-        border-radius: 20px; /* Borda bem arredondada (chip) */
+        border-radius: 20px; 
         border: 1px solid #C27C7C;
         background-color: #fff;
         color: #36454F;
         font-size: 0.9rem;
         cursor: pointer;
         transition: all 0.2s;
-        flex-shrink: 0; /* Impede que o botão encolha */
+        flex-shrink: 0; 
         text-decoration: none;
     }
 
     .chip-button:hover,
     .chip-button.active {
-        background-color: #C27C7C; /* Cor rosa para o ativo */
+        background-color: #C27C7C; 
         border-color: #C27C7C;
         color: white;
     }
     
-    /* Estilo para o botão "Todos" */
     .chip-button.all-products {
         background-color: #E0E0E0;
         font-weight: bold;
@@ -128,7 +177,7 @@
             display: block; 
         }
 
-        /* ESCONDE A SIDEBAR LATERAL (mantendo a regra original) */
+        /* ESCONDE A SIDEBAR LATERAL NO MOBILE */
         .sidebar-categorias {
             display: none;
         }
@@ -140,15 +189,37 @@
         #productCatalog {
             width: 100%;
             padding: 15px; 
+            padding-left: 0; /* Remove padding extra quebra o layout no mobile */
         }
         
-        .carousel-item-content {
-            height: 200px; /* Reduz a altura do banner no celular */
+        /* Ajustes no cabeçalho mobile */
+        .header-content {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .logo, .btn-contact-header {
+            margin-bottom: 10px;
+        }
+        .logo {
+            order: 1;
+            width: 100%;
+            text-align: center;
+            justify-content: center;
+            padding: 0;
+        }
+        .search-bar-header {
+            order: 3;
+            width: 100%;
+            max-width: 100%;
+            margin: 5px 0 10px;
+        }
+        .btn-contact-header {
+            order: 2;
         }
     }
     
     /* ================================== */
-    /* ESTILOS RESTANTES (MANTIDOS) */
+    /* ESTILOS CARROSSEL E GERAIS (MANTIDOS) */
     /* ================================== */
     .hero-carousel-container {
         max-width: 1000px;
@@ -199,6 +270,7 @@
         background-color: #C27C7C;
         border-color: #C27C7C;
     }
+    
     .footer {
         background-color: #36454F;
         color: white;
@@ -272,7 +344,7 @@
             <a href="#" class="chip-button" data-category="Perfume Capilar">Perfume Capilar</a>
             <a href="#" class="chip-button" data-category="Maquiagem">Maquiagem</a>
             <a href="#" class="chip-button" data-category="Sensualidade e Prazer">Sensualidade</a>
-            </div>
+        </div>
     </div>
 
 
@@ -424,7 +496,7 @@
                 
                 if (manualChip) manualChip.classList.add('active');
                 if (manualLink) manualLink.classList.add('active');
-                if (categoryValue === '') document.querySelector('.chip-button.all-products').classList.add('active'); // Ativa TODOS no mobile se o valor for vazio
+                if (categoryValue === '' && document.getElementById('allProductsLink')) document.querySelector('.chip-button.all-products').classList.add('active'); 
             }
 
             currentCategoryFilter = categoryValue;
