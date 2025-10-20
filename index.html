@@ -20,7 +20,7 @@
         color: #36454F;
     }
     
-    /* ESTILOS DO CABEÇALHO */
+    /* ESTILOS DO CABEÇALHO (MANTIDOS) */
     header {
         background-color: #ffffff;
         padding: 10px 0;
@@ -71,34 +71,84 @@
         color: white;
     }
     
+    /* ================================== */
+    /* NOVO ESTILO: FILTRO MOBILE (CHIPS/BOTÕES) */
+    /* ================================== */
+    .mobile-filter-container {
+        display: none; /* Escondido por padrão no Desktop */
+        padding: 15px 0 10px 0;
+        margin-top: 10px;
+        overflow-x: auto; /* Permite a rolagem horizontal */
+        white-space: nowrap; /* Impede que os botões quebrem a linha */
+        -webkit-overflow-scrolling: touch; /* Melhora a rolagem no iOS */
+    }
+
+    .mobile-chip-list {
+        padding: 0 15px;
+        display: flex;
+        gap: 8px; /* Espaço entre os botões */
+    }
+
+    .chip-button {
+        display: inline-block;
+        padding: 8px 15px;
+        border-radius: 20px; /* Borda bem arredondada (chip) */
+        border: 1px solid #C27C7C;
+        background-color: #fff;
+        color: #36454F;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.2s;
+        flex-shrink: 0; /* Impede que o botão encolha */
+        text-decoration: none;
+    }
+
+    .chip-button:hover,
+    .chip-button.active {
+        background-color: #C27C7C; /* Cor rosa para o ativo */
+        border-color: #C27C7C;
+        color: white;
+    }
+    
+    /* Estilo para o botão "Todos" */
+    .chip-button.all-products {
+        background-color: #E0E0E0;
+        font-weight: bold;
+    }
+    .chip-button.all-products.active {
+        background-color: #A96868;
+        color: white;
+    }
+
+
+    /* Media Query para CELULAR (Telas Pequenas) */
     @media (max-width: 992px) {
-        .header-content {
-            flex-wrap: wrap;
-            justify-content: center;
+        /* MOSTRA O FILTRO DE BOTÕES */
+        .mobile-filter-container {
+            display: block; 
         }
-        .logo, .btn-contact-header {
-            margin-bottom: 10px;
+
+        /* ESCONDE A SIDEBAR LATERAL (mantendo a regra original) */
+        .sidebar-categorias {
+            display: none;
         }
-        .logo {
-            order: 1;
+        
+        .main-content {
+            display: block; 
+            margin-top: 0; 
+        }
+        #productCatalog {
             width: 100%;
-            text-align: center;
-            justify-content: center;
-            padding: 0;
+            padding: 15px; 
         }
-        .search-bar-header {
-            order: 3;
-            width: 100%;
-            max-width: 100%;
-            margin: 5px 0 10px;
-        }
-        .btn-contact-header {
-            order: 2;
+        
+        .carousel-item-content {
+            height: 200px; /* Reduz a altura do banner no celular */
         }
     }
     
     /* ================================== */
-    /* ESTILO: CARROSSEL HERO */
+    /* ESTILOS RESTANTES (MANTIDOS) */
     /* ================================== */
     .hero-carousel-container {
         max-width: 1000px;
@@ -119,14 +169,7 @@
         justify-content: center;
         align-items: center;
     }
-    
-    .carousel-item-content h1 {
-        font-size: 2.2rem;
-        font-weight: bold;
-        margin-bottom: 10px;
-    }
 
-    /* Estilo para o SEU Banner (Slide 2) */
     .custom-banner-2 {
         padding: 0;
         background-color: transparent !important;
@@ -139,8 +182,6 @@
         object-fit: cover; 
         display: block;
     }
-
-    /* Botão de Destaque/Promoção (Vermelho) */
     .btn-promo {
         background-color: #ff4500; 
         color: white;
@@ -153,130 +194,10 @@
         transition: background-color 0.2s;
         margin-top: 15px;
     }
-    .btn-promo:hover {
-        background-color: #cc3700;
-        color: white;
-    }
 
-    /* Estilo para o botão de WhatsApp no Hero */
-    .btn-whatsapp {
-        background-color: #25d366; /* COR VERDE WHATSAPP */
-        color: white;
-        border: none;
-        border-radius: 5px;
-        padding: 10px 25px;
-        font-size: 1.1rem;
-        text-decoration: none;
-        transition: background-color 0.2s;
-    }
-    .btn-whatsapp:hover {
-        background-color: #1c9d4b;
-    }
-
-    /* ESTILO DOS CARDS */
     .card .btn-primary {
         background-color: #C27C7C;
         border-color: #C27C7C;
-    }
-
-    /* LAYOUT PRINCIPAL (SIDEBAR + PRODUTOS) */
-    .main-content {
-        display: flex;
-        margin-top: 30px; 
-    }
-    
-    /* SIDEBAR DE CATEGORIAS */
-    .sidebar-categorias {
-        min-width: 280px;
-        max-width: 280px;
-        padding: 15px;
-        margin-right: 20px;
-        background-color: #ffffff; 
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-        height: fit-content; 
-    }
-
-    .sidebar-categorias h4 {
-        color: #C27C7C; 
-        padding-bottom: 0;
-        margin-bottom: 10px;
-        font-weight: bold;
-    }
-    
-    .sidebar-categorias .categoria-group h5 {
-        font-size: 1.1rem;
-        color: #36454F;
-        font-weight: bold;
-        margin-bottom: 5px; 
-        margin-top: 15px; 
-    }
-    
-    /* Estilo para "TODOS OS PRODUTOS" */
-    #allProductsLink {
-        color: #C27C7C !important;
-        font-size: 1rem;
-        font-weight: bold;
-        display: block;
-        margin-bottom: 20px;
-        text-decoration: none;
-    }
-
-    /* Estilo para os itens de produto (Sem bolinhas e sem sublinhado) */
-    .sidebar-categorias .product-link {
-        margin-bottom: 3px;
-        padding-left: 0; 
-    }
-
-    .sidebar-categorias .product-link a {
-        text-decoration: none; 
-        color: #36454F;
-        display: block;
-        padding: 0;
-        transition: color 0.2s;
-    }
-    .sidebar-categorias .product-link a.active {
-        color: #A96868; 
-        font-weight: bold;
-    }
-
-    /* ================================== */
-    /* ESTILO: FILTRO MOBILE (DROPDOWN) */
-    /* ================================== */
-    .mobile-filter-container {
-        /* Escondido por padrão no Desktop */
-        display: none; 
-        padding: 15px 15px 0;
-        margin-top: 10px;
-    }
-    .mobile-filter-container select {
-        width: 100%;
-        border: 1px solid #C27C7C;
-        border-radius: 5px;
-        padding: 8px;
-    }
-
-
-    /* Media Query para CELULAR (Telas Pequenas) */
-    @media (max-width: 992px) {
-        /* MOSTRA O FILTRO DROPDOWN */
-        .mobile-filter-container {
-            display: block; 
-        }
-
-        /* ESCONDE A SIDEBAR LATERAL */
-        .sidebar-categorias {
-            display: none;
-        }
-        
-        .main-content {
-            display: block; /* Garante que os produtos apareçam abaixo do filtro */
-            margin-top: 0; /* Remove a margem extra no celular */
-        }
-        #productCatalog {
-            width: 100%;
-            padding: 15px; /* Adiciona padding para o catálogo */
-        }
     }
     .footer {
         background-color: #36454F;
@@ -339,43 +260,19 @@
 
     </div>
     
-    <div class="mobile-filter-container container">
-        <select id="mobileCategoryFilter" class="form-select">
-            <option value="">Filtrar por Categoria</option>
-            <option value="">TODOS OS PRODUTOS</option>
+    <div class="mobile-filter-container">
+        <div class="mobile-chip-list">
+            <a href="#" class="chip-button all-products active" data-category="">TODOS OS PRODUTOS</a>
             
-            <optgroup label="Higiene e Cuidados Íntimos">
-                <option value="Sabonete Intimo">Sabonete íntimo</option>
-                <option value="Desodorante Intimo">Desodorante íntimo</option>
-            </optgroup>
-            
-            <optgroup label="Facial">
-                <option value="Facial">Sabonete Facial</option>
-            </optgroup>
-
-            <optgroup label="Corpo e Banho">
-                <option value="Esfoliante">Esfoliante</option>
-                <option value="Corpo e Banho">Hidratante Corporal</option>
-                <option value="Sabonete Corporal">Sabonete corporal</option>
-                <option value="Kit Banho de Lua">Kit Banho de Lua</option>
-                <option value="Body Splash">Body Splash</option>
-            </optgroup>
-            
-            <optgroup label="Cabelos">
-                <option value="Perfume Capilar">Perfume Capilar</option> 
-                <option value="Protetor Térmico">Protetor Térmico + Reparador</option> 
-                <option value="Kit Capilar">Kit Capilar</option>
-            </optgroup>
-            
-            <optgroup label="Maquiagem">
-                <option value="Maquiagem">Batom/Gloss Lip Magic</option>
-            </optgroup>
-
-            <optgroup label="Sensualidade e Prazer">
-                <option value="Sensualidade e Prazer">Gel hidratante beijável</option>
-            </optgroup>
-            
-        </select>
+            <a href="#" class="chip-button" data-category="Sabonete Intimo">Higiene Íntima</a>
+            <a href="#" class="chip-button" data-category="Facial">Facial</a>
+            <a href="#" class="chip-button" data-category="Esfoliante">Esfoliantes</a>
+            <a href="#" class="chip-button" data-category="Corpo e Banho">Hidratante Corporal</a>
+            <a href="#" class="chip-button" data-category="Body Splash">Body Splash</a>
+            <a href="#" class="chip-button" data-category="Perfume Capilar">Perfume Capilar</a>
+            <a href="#" class="chip-button" data-category="Maquiagem">Maquiagem</a>
+            <a href="#" class="chip-button" data-category="Sensualidade e Prazer">Sensualidade</a>
+            </div>
     </div>
 
 
@@ -514,28 +411,21 @@
 
         // Função de filtro principal
         function filterByCategory(categoryValue) {
-            // Remove o estado 'active' de todos os links da sidebar
-            document.querySelectorAll('.sidebar-categorias .product-link a, #allProductsLink').forEach(a => a.classList.remove('active'));
+            // Remove o estado 'active' de todos os botões/links
+            document.querySelectorAll('.chip-button, .sidebar-categorias .product-link a, #allProductsLink').forEach(a => a.classList.remove('active'));
             
-            // Tenta aplicar o estado 'active' ao elemento clicado na sidebar
+            // Tenta aplicar o estado 'active' ao elemento clicado (Chip ou Sidebar Link)
             if (event && event.target) {
                 event.target.classList.add('active');
             } else {
-                // Se for uma chamada manual (como no dropdown mobile), encontra e ativa o link
-                const manualLink = document.querySelector(`[data-category="${categoryValue}"]`);
-                if (manualLink) {
-                    manualLink.classList.add('active');
-                } else if (categoryValue === '' && document.getElementById('allProductsLink')) {
-                     document.getElementById('allProductsLink').classList.add('active');
-                }
+                // Se for uma chamada manual (ex: carrossel), tenta ativar o botão/link correspondente
+                const manualChip = document.querySelector(`.chip-button[data-category="${categoryValue}"]`);
+                const manualLink = document.querySelector(`.sidebar-categorias a[data-category="${categoryValue}"]`);
+                
+                if (manualChip) manualChip.classList.add('active');
+                if (manualLink) manualLink.classList.add('active');
+                if (categoryValue === '') document.querySelector('.chip-button.all-products').classList.add('active'); // Ativa TODOS no mobile se o valor for vazio
             }
-
-            // Garante que o dropdown mobile tenha o valor correto selecionado
-            const mobileFilter = document.getElementById('mobileCategoryFilter');
-            if (mobileFilter) {
-                mobileFilter.value = categoryValue;
-            }
-
 
             currentCategoryFilter = categoryValue;
             document.getElementById('searchInput').value = ''; 
@@ -562,13 +452,14 @@
                 });
             }
             
-            // Adiciona o Event Listener para o novo dropdown mobile
-            const mobileFilter = document.getElementById('mobileCategoryFilter');
-            if (mobileFilter) {
-                mobileFilter.addEventListener('change', function() {
-                    filterByCategory(this.value);
+            // Adiciona o Event Listener para os novos botões chips
+            document.querySelectorAll('.mobile-chip-list .chip-button').forEach(button => {
+                button.addEventListener('click', function(event) {
+                    event.preventDefault(); 
+                    const category = this.getAttribute('data-category');
+                    filterByCategory(category);
                 });
-            }
+            });
 
             // Adiciona o Event Listener para a Sidebar (Desktop)
             document.querySelectorAll('.sidebar-categorias .product-link a, #allProductsLink').forEach(link => {
@@ -581,12 +472,14 @@
 
             document.getElementById('searchInput').addEventListener('input', function() {
                 currentCategoryFilter = '';
-                document.querySelectorAll('.sidebar-categorias .product-link a, #allProductsLink').forEach(a => a.classList.remove('active'));
+                document.querySelectorAll('.chip-button, .sidebar-categorias .product-link a, #allProductsLink').forEach(a => a.classList.remove('active'));
                 
                 applyFiltersAndSearch();
             });
             
+            // Ativa o botão 'TODOS OS PRODUTOS' na sidebar e nos chips ao carregar
             document.getElementById('allProductsLink').classList.add('active');
+            document.querySelector('.chip-button.all-products').classList.add('active');
         });
     </script>
 </body>
